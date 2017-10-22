@@ -1,0 +1,5 @@
+#URL = https://www.cleartrip.com/flights/results?from=HYD&to=LKO&depart_date=17/11/2017&return_date=20/11/2017&adults=2&childs=2&infants=0&class=Economy&airline=&carrier=&intl=n&sd=1508172823883&sortType0=price&sortOrder0=sortDes&sortType1=price&sortOrder1=sortDes&page=loaded
+#URL = https://www.cleartrip.com/flights/itinerary/68c8a4e9b9-df0d-44e6-a2e3-6d697b77d596/review
+URL = https://www.cleartrip.com/
+browserName = chrome
+hostName = localHost
