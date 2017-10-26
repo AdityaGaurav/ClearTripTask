@@ -3,9 +3,11 @@ package utils.drivers;
 import org.openqa.selenium.WebDriver;
 import utils.fileUtils.PropertiesFileOperator;
 
+import java.net.MalformedURLException;
+
 public class WebDriverHandler {
 
-    public static WebDriver getWebDriverHost() {
+    public static WebDriver getWebDriverHost() throws MalformedURLException {
         WebDriverFactory webDriverFactory;
         WebDriver driver;
         String host = PropertiesFileOperator.getHostName();

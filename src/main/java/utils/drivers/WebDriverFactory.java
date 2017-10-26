@@ -2,7 +2,9 @@ package utils.drivers;
 
 import org.openqa.selenium.WebDriver;
 
- interface WebDriverFactory {
-    WebDriver getWebDriver();
+import java.net.MalformedURLException;
+
+interface WebDriverFactory {
+    WebDriver getWebDriver() throws MalformedURLException;
 
 }

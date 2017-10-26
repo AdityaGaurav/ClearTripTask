@@ -27,6 +27,10 @@ public class FlightResultPage {
         return getDetailsOfArrivalConnectingFlight(indexOfFlight);
     }
 
+
+    public Map<String, FlightDetails> getSelectedFlightDetails(int indexOfFlight){
+        return getDetailsOfDepartConnectingFlight(indexOfFlight);
+    }
     public void clickOnPriceButton() {
         WaitForElement.waitForVisibilityOfAllElementsLocatedBy(FlightResultPageLocator.leftSideFlightList(), DEFAULT_TIME_OUT_IN_SECONDS);
         WebElement priceButton = FindElement.findElementOnPage(FlightResultPageLocator.getPriceButton(countBookButton), DEFAULT_TIME_OUT_IN_SECONDS);

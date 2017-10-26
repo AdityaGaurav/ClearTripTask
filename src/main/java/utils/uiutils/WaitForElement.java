@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitForElement extends UIUtils {
     private static byte DEFAULT_TIME_OUT_IN_SECONDS = 60;
-    static Wait waitForElement;
+    private static Wait waitForElement;
 
     public static void waitForElementTillVisibility(By locElement, long unit) {
         waitForElement = new WebDriverWait(webDriver, unit);

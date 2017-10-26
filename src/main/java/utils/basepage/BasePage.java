@@ -7,13 +7,15 @@ import utils.drivers.WebDriverHandler;
 import utils.fileUtils.PropertiesFileOperator;
 import utils.uiutils.UIUtils;
 
+import java.net.MalformedURLException;
+
 
 public class BasePage {
 
     private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
     @BeforeMethod(alwaysRun = true)
-    protected void setBrowser() {
+    protected void setBrowser() throws MalformedURLException {
         webDriver.set(WebDriverHandler.getWebDriverHost());
     }
 
