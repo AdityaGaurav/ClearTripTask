@@ -71,7 +71,7 @@
                     <!--<printSummary>true</printSummary>-->
                     <suiteXmlFiles>
                         <!-- TestNG suite XML files -->
-                        <suiteXmlFile>testsuites\testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src\testsuites\testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
