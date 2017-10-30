@@ -1,6 +1,5 @@
 package utils.uiutils;
 
-import com.sun.istack.internal.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +35,7 @@ public class UIUtils {
         return input.split(regex);
     }
 
-    public static void openURL(@NotNull String url) throws Exception {
+    public static void openURL( String url) throws Exception {
         if (url != null || url.trim().length() != 0) {
             System.out.println("Given url inside method: " + url);
             webDriver.get(url);

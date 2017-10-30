@@ -1,6 +1,5 @@
 package utils.fileUtils;
 
-import com.sun.istack.internal.NotNull;
 
 import java.io.File;
 import java.io.FileReader;
@@ -25,7 +24,7 @@ public class PropertiesFileOperator {
         }
     }
 
-    public static String getTestProperties(@NotNull String property) throws Exception{
+    public static String getTestProperties(String property) throws Exception{
         if (props == null) {
             loadProperties();
         }
