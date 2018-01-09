@@ -1,23 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Clear Trip Website Test Suite">
-    <test name="Return Trip Test">
-        <classes>
-            <class name="com.cleartrip.retruntrip.tests.BookReturnTripFlightTest">
-                <parameter name="tripType" value="RoundTrip"/>
-                <parameter name="fromCityNameWithCountryCode" value="Hyderabad, IN"/>
-                <parameter name="toCityNameWithCountryCode" value="Lucknow, IN"/>
-                <parameter name="departureDate" value="2017/11/17"/>
-                <parameter name="returnDate" value="2017/11/20"/>
-                <parameter name="adultValue" value="2"/>
-                <parameter name="childrenValue" value="2"/>
-                <parameter name="infantsValue" value="0"/>
-                <parameter name="selectFlightAsPerHighestPrice" value="2"/>
-                <methods>
-                    <include name="test_verifyDetailsOfBookedFlight"/>
-                </methods>
-            </class>
-        </classes>
+<suite name="Clear Trip Website Test Suite" parallel="classes">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+        <listener class-name="utils.listeners.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Return Trip Test" parallel="methods">
+        <parameter name="tripType" value="RoundTrip"/>
+        <parameter name="fromCityNameWithCountryCode" value="Hyderabad, IN"/>
+        <parameter name="toCityNameWithCountryCode" value="Lucknow, IN"/>
+        <parameter name="departureDate" value="2018/11/17"/>
+        <parameter name="returnDate" value="2018/11/20"/>
+        <parameter name="adultValue" value="2"/>
+        <parameter name="childrenValue" value="2"/>
+        <parameter name="infantsValue" value="0"/>
+        <parameter name="selectFlightAsPerHighestPrice" value="2"/>
+        <packages>
+            <package name="com.cleartrip.retruntrip.tests"/>
+        </packages>
+        <!--<classes>-->
+            <!--<class name="com.cleartrip.retruntrip.tests.BookReturnTripFlightTest">-->
+                <!--<parameter name="tripType" value="RoundTrip"/>-->
+                <!--<parameter name="fromCityNameWithCountryCode" value="Hyderabad, IN"/>-->
+                <!--<parameter name="toCityNameWithCountryCode" value="Lucknow, IN"/>-->
+                <!--<parameter name="departureDate" value="2018/11/17"/>-->
+                <!--<parameter name="returnDate" value="2018/11/20"/>-->
+                <!--<parameter name="adultValue" value="2"/>-->
+                <!--<parameter name="childrenValue" value="2"/>-->
+                <!--<parameter name="infantsValue" value="0"/>-->
+                <!--<parameter name="selectFlightAsPerHighestPrice" value="2"/>-->
+                <!--<methods>-->
+
+                <!--</methods>-->
+                <!--<methods>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--<include name="test_verifyDetailsOfBookedFlight"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
     </test> <!-- test -->
 </suite><!-- suite-->

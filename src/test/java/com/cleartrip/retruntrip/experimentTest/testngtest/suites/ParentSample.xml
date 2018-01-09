@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sample TestNG Test Suite" verbose="15"  parallel="methods" thread-count="6">
+    <!--<suite-files>-->
+        <!--<suite-file path="Sample1.xml"/>-->
+        <!--<suite-file path="Sample2.xml"/>-->
+    <!--</suite-files>-->
+    <!--<test name="Test">-->
+    <!--<packages>-->
+        <!--<package name="com.cleartrip.retruntrip.experimentTest.testngtest.*">-->
+            <!--<include name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.*" description="Test Package" invocation-numbers="2"/>-->
+        <!--</package>-->
+    <!--</packages>-->
+    <!--<method-selectors>-->
+        <!--<method-selector><script language="beanshell"><![CDATA[-->
+         <!--testngMethod.getMethodName().contains(System.getProperty("testToRun"))-->
+       <!--]]></script></method-selector>-->
+    <!--</method-selectors>-->
+    <test name="TestNg "  verbose="10" preserve-order="true" parallel="tests" thread-count="5">
+        <!--<packages>-->
+            <!--<package name="com.cleartrip.retruntrip.experimentTest.testngtest.*">-->
+                <!--<include name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.*" description="Test Package" invocation-numbers="2"/>-->
+            <!--</package>-->
+        <!--</packages>-->
+        <!--<groups>-->
+            <!--<define name="endtoend">-->
+                <!--<include name="sanity"/>-->
+                <!--<include name="regression"/>-->
+            <!--</define>-->
+            <!--<run>-->
+                <!--<include name="endtoend"/>-->
+            <!--</run>-->
+        <!--</groups>-->
+        <classes>
+            <class name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.TestClass">
+                <methods>
+                    <exclude name="m3_TestClass"/>
+                </methods>
+            </class>
+            <parameter name="browserName" value="chrome"/>
+            <parameter name="platformName" value="windows"/>
+        </classes>
+        <!--&lt;!&ndash;<classes>&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.TestClass"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.TestClass2"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</classes>&ndash;&gt;-->
+    </test>
+</suite>

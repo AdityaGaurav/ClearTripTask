@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test TestNG Annotation" skipfailedinvocationcounts="true" parallel="classes" preserve-order=""
+       data-provider-thread-count="" thread-count="" time-out="" object-factory="" guice-stage="DEVELOPMENT"
+       parent-module="" verbose="2" allow-return-values="true" group-by-instances="true" annotations=""
+       junit="true" configfailurepolicy="continue" >
+    <!--invocation-numbers=2 in the xml is used by testNG to identify the index of data-provider based tests when it fails. If you have a data provider that has 5 different data, -->
+    <!--when one of them fails testNG needs to identify the data for which the test failed. It is updated in the testng-failed.xml using invocation-numbers attribute-->
+    <packages>
+        <package name="A">
+            <include name="" description="" invocation-numbers="">
+            </include>
+            <exclude name="">
+            </exclude>
+        </package>
+    </packages>
+
+    <listeners>
+        <listener class-name="com"/>
+    </listeners>
+
+    <parameter name="" value=""/>
+
+    <groups>
+        <dependencies>
+            <group name="" depends-on=""/>
+        </dependencies>
+        <run>
+            <exclude name=""/>
+            <include name="" invocation-numbers="" description=""/>
+        </run>
+        <define name="">
+            <include name="" description="" invocation-numbers=""/>
+        </define>
+    </groups>
+
+    <method-selectors>
+        <method-selector>
+            <script language="">
+            </script>
+            <selector-class name="com" priority="">
+                <suite-file path="">
+                </suite-file>
+            </selector-class>
+        </method-selector>
+    </method-selectors>
+
+    <suite-files >
+        <suite-file path=""/>
+    </suite-files>
+
+    <test name="Test" junit="" annotations="" group-by-instances="true"
+          allow-return-values="true" verbose="" time-out="" thread-count=""
+          preserve-order="true" parallel="methods" skipfailedinvocationcounts="" enabled="">
+        <method-selectors>
+            <method-selector>
+                <selector-class name="">
+                    <methods>
+                    </methods>
+                </selector-class>
+            </method-selector>
+        </method-selectors>
+
+        <groups></groups>
+
+        <parameter name="" value=""/>
+
+        <packages>
+            <package name="">
+                <include name="">
+                    <package name=""/>
+                </include>
+            </package>
+        </packages>
+
+        <classes>
+            <parameter name="" value=""/>
+            <class name="">
+                <parameter name="" value="">
+                    <include name="" invocation-numbers="" description=""/>
+                    <classes>
+                        <class name="" >
+
+                        </class>
+                    </classes>
+                </parameter>
+                <methods>
+                    <parameter name="" value=""/>
+                    <include name="" invocation-numbers="" description=""/>
+                    <parameter name="" value=""/>
+                    <include name="" invocation-numbers="" description=""/>
+                    <exclude name=""/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

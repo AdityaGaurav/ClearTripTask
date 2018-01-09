@@ -11,6 +11,7 @@ public class FlightItineraryPageLocator {
 
     public static By getFlightCount(String flightType) {
         String flightCount = "//div[contains(@class,'" + flightType + "')]";
+        String count = String.format("//div[contains(@class,'%s')",flightType);
         return By.xpath(flightCount);
     }
 

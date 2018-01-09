@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Sample TestNG Test Suite" verbose="15"  parallel="methods">
+    <test name="TestNg "  verbose="10" parallel="tests">
+        <classes>
+            <!--<class name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.TestClass"/>-->
+            <class name="com.cleartrip.retruntrip.experimentTest.testngtest.tests.TestClass2"/>
+        </classes>
+    </test>
+</suite>

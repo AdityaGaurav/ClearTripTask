@@ -10,11 +10,11 @@ import utils.fileUtils.PropertiesFileOperator;
 
 import java.io.File;
 
-final class LocalWebDriverFactory implements WebDriverFactory {
+class LocalWebDriverFactory implements WebDriverFactory {
 
     private WebDriver driver;
-    private String firefoxBinaryPath;
-    private String chromeBinaryPath;
+    String firefoxBinaryPath;
+    String chromeBinaryPath;
 
     LocalWebDriverFactory() {
         this.driver = null;

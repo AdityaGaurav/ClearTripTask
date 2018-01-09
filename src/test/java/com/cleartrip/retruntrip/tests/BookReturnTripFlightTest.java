@@ -14,12 +14,443 @@ import java.text.ParseException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class BookReturnTripFlightTest extends BasePage {
+@Test
+public class BookReturnTripFlightTest extends BaseTest {
 
 
-    @Parameters({"tripType","fromCityNameWithCountryCode","toCityNameWithCountryCode","departureDate","returnDate","adultValue","childrenValue","infantsValue","selectFlightAsPerHighestPrice"})
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
     @Test
     void test_verifyDetailsOfBookedFlight(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight2(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight3(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight4(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight5(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight6(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight7(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight8(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight9(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight10(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight11(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight12(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight13(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight14(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight15(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight16(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight17(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight18(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight19(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
+        FlightsHomePage flightsHomePage = new FlightsHomePage();
+//        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
+//                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",
+//                "2", "0", "0");
+        FlightResultPage flightResultPage = flightsHomePage.bookFlight(tripType, fromCityNameWithCountryCode,
+                toCityNameWithCountryCode, departureDate, returnDate, adultValue, childrenValue, infantsValue);
+        Map<String, Map<String, FlightDetails>> flightResultPageDetails = new LinkedHashMap<>();
+        int indexOfFlight = 2;
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Depart", flightResultPage.bookDepartFlight(selectFlightAsPerHighestPrice));
+        flightResultPage.clickOnPriceButton();
+        flightResultPageDetails.put("Arrival", flightResultPage.bookArrivalFlight(selectFlightAsPerHighestPrice));
+        FlightItineraryPage flightItineraryPage = flightResultPage.clickOnBookButton();
+        flightItineraryPage.getDetailsOfFlights();
+        Map<String, Map<String, FlightItinerary>> flightItineraryPageDetails = new LinkedHashMap<>();
+        flightItineraryPageDetails.put("Depart", flightItineraryPage.getDetailsOfDepartFlight());
+        flightItineraryPageDetails.put("Arrival", flightItineraryPage.getDetailsOfArrivalFlight());
+        verifyFlightDetails(flightResultPageDetails, flightItineraryPageDetails);
+    }
+    @Parameters({"tripType", "fromCityNameWithCountryCode", "toCityNameWithCountryCode", "departureDate", "returnDate", "adultValue", "childrenValue", "infantsValue", "selectFlightAsPerHighestPrice"})
+    @Test
+    void test_verifyDetailsOfBookedFlight20(String tripType, String fromCityNameWithCountryCode, String toCityNameWithCountryCode, String departureDate, String returnDate, String adultValue, String childrenValue, String infantsValue, int selectFlightAsPerHighestPrice) throws ParseException {
         FlightsHomePage flightsHomePage = new FlightsHomePage();
 //        FlightResultPage flightResultPage = flightsHomePage.bookFlight("RoundTrip", "Hyderabad, IN",
 //                "Lucknow, IN", "17\\11\\2017", "20\\11\\2017",

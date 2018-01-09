@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Clear Trip Website Test Suite" duration-ms="28956" started-at="2017-10-30T13:36:27Z" finished-at="2017-10-30T13:36:56Z">
+    <groups>
+    </groups>
+    <test name="Return Trip Test" duration-ms="28956" started-at="2017-10-30T13:36:27Z" finished-at="2017-10-30T13:36:56Z">
+      <class name="com.cleartrip.retruntrip.tests.BookReturnTripFlightTest">
+        <test-method status="PASS" signature="setBrowser()[pri:0, instance:com.cleartrip.retruntrip.tests.BookReturnTripFlightTest@21bcffb5]" name="setBrowser" is-config="true" duration-ms="3326" started-at="2017-10-30T19:06:27Z" finished-at="2017-10-30T19:06:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setBrowser -->
+        <test-method status="PASS" signature="setConfiguration()[pri:0, instance:com.cleartrip.retruntrip.tests.BookReturnTripFlightTest@21bcffb5]" name="setConfiguration" is-config="true" duration-ms="2998" started-at="2017-10-30T19:06:31Z" depends-on-methods="utils.basepage.BasePage.setBrowser" finished-at="2017-10-30T19:06:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setConfiguration -->
+        <test-method status="PASS" signature="test_verifyDetailsOfBookedFlight(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)[pri:0, instance:com.cleartrip.retruntrip.tests.BookReturnTripFlightTest@21bcffb5]" name="test_verifyDetailsOfBookedFlight" duration-ms="21372" started-at="2017-10-30T19:06:34Z" finished-at="2017-10-30T19:06:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[RoundTrip]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Hyderabad, IN]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Lucknow, IN]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[2017/11/17]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[2017/11/20]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test_verifyDetailsOfBookedFlight -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cleartrip.retruntrip.tests.BookReturnTripFlightTest@21bcffb5]" name="tearDown" is-config="true" duration-ms="1235" started-at="2017-10-30T19:06:55Z" finished-at="2017-10-30T19:06:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.cleartrip.retruntrip.tests.BookReturnTripFlightTest -->
+    </test> <!-- Return Trip Test -->
+  </suite> <!-- Clear Trip Website Test Suite -->
+</testng-results>

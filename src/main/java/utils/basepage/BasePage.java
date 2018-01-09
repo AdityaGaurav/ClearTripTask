@@ -1,6 +1,7 @@
 package utils.basepage;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.drivers.WebDriverHandler;
@@ -8,11 +9,16 @@ import utils.fileUtils.PropertiesFileOperator;
 import utils.uiutils.UIUtils;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class BasePage {
 
-    private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+    protected static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+    private static List<WebDriver> webDriversPool = Collections.synchronizedList(new ArrayList<>());
+    protected WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
     protected void setBrowser() throws MalformedURLException {
@@ -23,6 +29,7 @@ public class BasePage {
     protected void setConfiguration() {
         try {
             final String URL = PropertiesFileOperator.getURLName();
+            webDriversPool.add(webDriver.get());
             if (webDriver.get() != null) {
                 UIUtils.setWebDriver(webDriver.get());
                 UIUtils.openURL(URL);
@@ -32,9 +39,10 @@ public class BasePage {
         }
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     protected void tearDown() {
-        if (webDriver.get() != null)
-            webDriver.get().quit();
+        for (WebDriver driver : webDriversPool) {
+            driver.quit();
+        }
     }
 }

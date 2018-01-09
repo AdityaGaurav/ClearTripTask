@@ -11,39 +11,39 @@ public class WaitForElement extends UIUtils {
     private static Wait waitForElement;
 
     public static void waitForElementTillVisibility(By locElement, long unit) {
-        waitForElement = new WebDriverWait(webDriver, unit);
+        waitForElement = new WebDriverWait(threadLocal.get(), unit);
         try {
             waitForElement.until(ExpectedConditions.visibilityOfElementLocated(locElement));
         } catch (StaleElementReferenceException e) {
-            webDriver.findElement(locElement);
+            threadLocal.get().findElement(locElement);
         }
     }
 
     public static void waitForElementToBeClickable(By locElement, long unit) {
-        waitForElement = new WebDriverWait(webDriver, unit);
+        waitForElement = new WebDriverWait(threadLocal.get(), unit);
         try {
             waitForElement.until(ExpectedConditions.elementToBeClickable(locElement));
         } catch (StaleElementReferenceException e) {
-            webDriver.findElement(locElement);
+            threadLocal.get().findElement(locElement);
         }
     }
 
     public static void waitForElementToBe(By elementLocator, long unit) {
-        waitForElement = new WebDriverWait(webDriver, unit);
+        waitForElement = new WebDriverWait(threadLocal.get(), unit);
         try {
             waitForElement.until(ExpectedConditions.elementToBeSelected(elementLocator));
         } catch (StaleElementReferenceException e) {
-            webDriver.findElement(elementLocator);
+            threadLocal.get().findElement(elementLocator);
         }
     }
 
     public static void waitForVisibilityOfAllElementsLocatedBy(By loc, long unit) {
-        waitForElement = new WebDriverWait(webDriver, unit);
+        waitForElement = new WebDriverWait(threadLocal.get(), unit);
         waitForElement.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(loc));
     }
 
     public static void waitForPresenceOfAllElementsLocated(By loc, long unit){
-        waitForElement = new WebDriverWait(webDriver, unit);
+        waitForElement = new WebDriverWait(threadLocal.get(), unit);
         waitForElement.until(ExpectedConditions.presenceOfAllElementsLocatedBy(loc));
     }
 }

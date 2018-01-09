@@ -14,7 +14,6 @@ import java.net.URL;
 class RemoteWebDriverFactory implements WebDriverFactory {
     public WebDriver getWebDriver() throws MalformedURLException {
         URL hub = new URL("");
-
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         WebDriver browserDriver = new RemoteWebDriver(hub, capabilities);
 //        ((RemoteWebDriver) browserDriver).setFileDetector(new LocalFileDetector());

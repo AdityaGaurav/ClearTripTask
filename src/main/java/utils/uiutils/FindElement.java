@@ -12,9 +12,9 @@ public class FindElement extends WaitForElement {
         WebElement element = null;
         try {
             waitForElementTillVisibility(elementLocToFind, unit);
-            element = webDriver.findElement(elementLocToFind);
+            element = threadLocal.get().findElement(elementLocToFind);
         } catch (NoSuchElementException e) {
-            webDriver.findElement(elementLocToFind);
+            threadLocal.get().findElement(elementLocToFind);
         }
         return element;
     }
@@ -30,20 +30,20 @@ public class FindElement extends WaitForElement {
     }
     public static List<WebElement> findElementsOnPage(By elementLocToFind,long unit) {
         waitForVisibilityOfAllElementsLocatedBy(elementLocToFind,unit);
-        return webDriver.findElements(elementLocToFind);
+        return threadLocal.get().findElements(elementLocToFind);
     }
 
     public static List<WebElement> findElementsOnPageTillAlllElementPresent(By elements, long unit){
         waitForPresenceOfAllElementsLocated(elements, unit);
-        return webDriver.findElements(elements);
+        return threadLocal.get().findElements(elements);
     }
 
     public static  List<WebElement> listOFElements(By loc){
-        return webDriver.findElements(loc);
+        return threadLocal.get().findElements(loc);
     }
 
     public static WebElement findElement(By loc){
-        return webDriver.findElement(loc);
+        return threadLocal.get().findElement(loc);
     }
 
 }

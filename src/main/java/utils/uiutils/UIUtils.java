@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class UIUtils {
 
-    static WebDriver webDriver;
+     WebDriver webDriver;
+    static ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
 
     UIUtils() {
     }
@@ -20,7 +21,8 @@ public class UIUtils {
     }
 
     public static void setWebDriver(WebDriver driver) {
-        webDriver = driver;
+        threadLocal.set(driver);
+       // webDriver = driver;
     }
 
     public boolean isValidLocator(By loc) {
@@ -38,7 +40,7 @@ public class UIUtils {
     public static void openURL( String url) throws Exception {
         if (url != null || url.trim().length() != 0) {
             System.out.println("Given url inside method: " + url);
-            webDriver.get(url);
+            threadLocal.get().get(url);
         } else {
             throw new Exception(url + " is not a valid selector");
 //            System.out.println("Not A valid URL.");
@@ -46,6 +48,6 @@ public class UIUtils {
     }
 
     public static String getCurrentURL() {
-        return webDriver.getCurrentUrl();
+        return threadLocal.get().getCurrentUrl();
     }
 }

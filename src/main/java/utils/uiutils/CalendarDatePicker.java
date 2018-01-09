@@ -23,7 +23,7 @@ public class CalendarDatePicker extends UIUtils {
             while (!currentYear.equalsIgnoreCase(year)) {
                 WebElement nextButton = FindElement.findElementOnPage(nextButtonLoc, 30);
                 nextButton.click();
-                WebElement nextYear = webDriver.findElement(yearLoc);
+                WebElement nextYear = threadLocal.get().findElement(yearLoc);
                 currentYear = nextYear.getText();
             }
         }
@@ -31,9 +31,9 @@ public class CalendarDatePicker extends UIUtils {
         String currentMonth = monthElement.getText();
         if (!currentMonth.equalsIgnoreCase(monthName)) {
             while (!currentMonth.equalsIgnoreCase(monthName)) {
-                WebElement nextButton = webDriver.findElement(nextButtonLoc);
+                WebElement nextButton = threadLocal.get().findElement(nextButtonLoc);
                 nextButton.click();
-                WebElement nextMonth = webDriver.findElement(monthLoc);
+                WebElement nextMonth = threadLocal.get().findElement(monthLoc);
                 currentMonth = nextMonth.getText();
             }
         }
